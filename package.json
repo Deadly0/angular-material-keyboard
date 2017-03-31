@@ -52,15 +52,15 @@
       "name": "David Enke"
     }
   ],
-  "name": "angular-material-keyboard",
+  "name": "angular-material-keyboard2",
   "optionalDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidenke/angular-material-keyboard.git"
+    "url": "git+https://github.com/Deadly0/angular-material-keyboard.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build"
   },
-  "version": "0.0.9"
+  "version": "0.0.10"
 }

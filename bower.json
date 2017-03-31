@@ -1,7 +1,7 @@
 {
-  "name": "angular-material-keyboard",
+  "name": "angular-material-keyboard2",
   "version": "0.0.2",
-  "homepage": "https://github.com/davidenke/angular-material-keyboard",
+  "homepage": "https://github.com/Deadly0/angular-material-keyboard.git",
   "author": "David Enke <postdavidenke.de>",
   "description": "Onscreen virtual keyboard for Angular (https://angularjs.org/) using Material (https://material.angularjs.org/)inspired by the Angular Virtual Keyboard by the-darc (https://github.com/the-darc/angular-virtual-keyboard).",
   "main": [
