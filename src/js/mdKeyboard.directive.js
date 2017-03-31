@@ -58,7 +58,7 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
                     $mdKeyboard.currentModel = ngModelCtrl;
                     $rootScope.keyboardAnimation = $mdKeyboard.show({
                         templateUrl: '../view/mdKeyboard.view.html',
-                        controller: mdKeyboardController,
+                        controller: ['$scope', mdKeyboardController],
                         bindToController: true
                     });
                 }
