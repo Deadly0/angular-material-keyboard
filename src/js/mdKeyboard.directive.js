@@ -78,9 +78,14 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
                     $scope.keyboardBottom = 0;
                 }
                 else {
-                    var top = Math.round(getElementOffset(element[0]).top);
+                    var top = Math.round(getElementOffset(element[0]).top),
+                        offset = parseInt(attrs.keyboardRelative);
 
-                    $scope.keyboardTop = top + 32 + 'px';
+                    if (isNaN(offset)) {
+                        offset = 2;
+                    }
+
+                    $scope.keyboardTop = top + element[0].offsetHeight + offset + 'px';
                     $scope.keyboardBottom = 'auto';
                 }
 

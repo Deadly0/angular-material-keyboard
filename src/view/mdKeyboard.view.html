@@ -5,14 +5,14 @@
                 <md-button class="md-raised key-bksp"
                            ng-mousedown="pressed($event, key[0])"
                            aria-label="{{key[0] || 'key'}}">
-                    <md-icon>keyboard_backspace</md-icon>
+                    🠄
                 </md-button>
             </span>
             <span ng-switch-when="Tab">
                 <md-button class="md-raised key-tab"
                            ng-mousedown="pressed($event, key[0])"
                            aria-label="{{key[0] || 'key'}}">
-                    <md-icon>keyboard_tab</md-icon>
+                    Tab
                 </md-button>
             </span>
             <span ng-switch-when="Caps">
@@ -20,14 +20,14 @@
                            ng-class="{'locked': capsLocked, 'md-focused': capsLocked}"
                            ng-mousedown="pressed($event, key[0])"
                            aria-label="{{key[0] || 'key'}}">
-                    <md-icon>keyboard_capslock</md-icon>
+                    Capslock
                 </md-button>
             </span>
             <span ng-switch-when="Enter">
                 <md-button class="md-raised key-enter"
                            ng-mousedown="pressed($event, key[0])"
                            aria-label="{{key[0] || 'key'}}">
-                    <md-icon>keyboard_return</md-icon>
+                    Enter
                 </md-button>
             </span>
             <span ng-switch-when="Shift">
