@@ -73,6 +73,17 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
             function mdKeyboardController($scope) {
                 $mdKeyboard.useLayout(attrs.useKeyboard);
 
+                if (attrs.keyboardRelative === undefined) {
+                    $scope.keyboardTop = 'auto';
+                    $scope.keyboardBottom = 0;
+                }
+                else {
+                    var top = Math.round(getElementOffset(element[0]).top);
+
+                    $scope.keyboardTop = top + 32 + 'px';
+                    $scope.keyboardBottom = 'auto';
+                }
+
                 var getKeyClass = function (key) {
                     var k = (key[0] || ' ').toLowerCase();
                     var keys = ['bksp', 'tab', 'caps', 'enter', 'shift', 'alt', 'altgr', 'altlk'];
@@ -92,6 +103,14 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
 
                     return 'key-' + k;
                 };
+
+                function getElementOffset(element) {
+                    var de = document.documentElement;
+                    var box = element.getBoundingClientRect();
+                    var top = box.top + window.pageYOffset - de.clientTop;
+                    var left = box.left + window.pageXOffset - de.clientLeft;
+                    return { top: top, left: left };
+                }
 
                 var triggerKey = function($event, key) {
                     $event.preventDefault();
@@ -234,5 +253,5 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
                 }, 200);
             }
         }
-    }
+    };
 }

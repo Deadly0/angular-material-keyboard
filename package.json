@@ -4,15 +4,15 @@
     "name": "David Enke"
   },
   "dependencies": {
-      "angular": "1.5.5",
-      "angular-animate": "1.5.5",
-      "angular-aria": "1.5.5",
-      "angular-material": "1.0.8",
-      "angular-messages": "1.5.5",
-      "angular-mocks": "1.5.5",
-      "angular-route": "1.5.5",
-      "angular-sanitize": "1.5.5",
-      "material-design-icons": "2.2.3"
+    "angular": "1.5.5",
+    "angular-animate": "1.5.5",
+    "angular-aria": "1.5.5",
+    "angular-material": "1.0.8",
+    "angular-messages": "1.5.5",
+    "angular-mocks": "1.5.5",
+    "angular-route": "1.5.5",
+    "angular-sanitize": "1.5.5",
+    "material-design-icons": "2.2.3"
   },
   "description": "Onscreen virtual keyboard for Angular (https://angularjs.org/) using Material (https://material.angularjs.org/)inspired by the Angular Virtual Keyboard by the-darc (https://github.com/the-darc/angular-virtual-keyboard).",
   "devDependencies": {
@@ -31,7 +31,8 @@
     "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.1.0",
-    "jshint-stylish": "^1.0.0"
+    "jshint-stylish": "^1.0.0",
+    "local-web-server": "^1.2.7"
   },
   "directories": {},
   "homepage": "https://github.com/davidenke/angular-material-keyboard",
@@ -60,6 +61,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ws --spa demo.html",
     "build": "gulp build"
   },
   "version": "0.0.10"

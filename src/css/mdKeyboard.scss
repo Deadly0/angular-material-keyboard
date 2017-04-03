@@ -17,7 +17,7 @@ $keyboard-horizontal-padding: 2 * $baseline-grid !default;
 $keyboard-vertical-padding: 1 * $baseline-grid !default;
 $keyboard-icon-after-margin: 4 * $baseline-grid !default;
 $keyboard-list-item-height: 6 * $baseline-grid !default;
-$keyboard-hidden-bottom-padding: 80px !default;
+$keyboard-hidden-bottom-padding: 0 !default;
 $keyboard-header-height: 7 * $baseline-grid !default;
 $keyboard-grid-font-weight: 400 !default;
 
@@ -30,7 +30,9 @@ md-keyboard {
     z-index: $z-index-keyboard;
 
     border-top-width: 1px;
+    border-bottom-width: 1px;
     border-top-style: solid;
+    border-bottom-style: solid;
 
     transform: translate3d(0, $keyboard-hidden-bottom-padding, 0);
     transition: $swift-ease-out;
@@ -39,6 +41,7 @@ md-keyboard {
     // should be provided by theme
     background-color: #FAFAFA;
     border-top-color: #E0E0E0;
+    border-bottom-color: #E0E0E0;
 
     &.md-has-header {
         padding-top: 0;
@@ -46,7 +49,7 @@ md-keyboard {
 
     &.ng-enter {
         opacity: 0;
-        transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 0, 0);
     }
 
     &.ng-enter-active {
@@ -57,7 +60,7 @@ md-keyboard {
     }
 
     &.ng-leave-active {
-        transform: translate3d(0, 100%, 0) !important;
+        opacity: 0 !important;
         transition: $swift-ease-in;
     }
 

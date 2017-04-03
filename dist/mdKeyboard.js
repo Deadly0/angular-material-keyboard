@@ -1,9 +1,9 @@
 /**
- * angular-material-keyboard
+ * angular-material-keyboard2
  * Onscreen virtual keyboard for Angular (https://angularjs.org/) using Material (https://material.angularjs.org/)inspired by the Angular Virtual Keyboard by the-darc (https://github.com/the-darc/angular-virtual-keyboard).
- * @version v0.0.1
+ * @version v0.0.2
  * @author David Enke <postdavidenke.de>
- * @link https://github.com/davidenke/angular-material-keyboard
+ * @link https://github.com/Deadly0/angular-material-keyboard.git
  * @license MIT
  */
 (function (angular) {
@@ -1581,7 +1581,7 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
                 if (!$mdKeyboard.isVisible()) {
                     $mdKeyboard.currentModel = ngModelCtrl;
                     $rootScope.keyboardAnimation = $mdKeyboard.show({
-                        template:'<md-keyboard class="md-grid" layout="column" ng-cloak><div ng-repeat="row in keyboard.keys" layout="row"><div flex ng-repeat="key in row" ng-switch="key[0]" ng-class="getKeyClass(key)"><span ng-switch-when="Bksp"><md-button class="md-raised key-bksp" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_backspace</md-icon></md-button></span> <span ng-switch-when="Tab"><md-button class="md-raised key-tab" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_tab</md-icon></md-button></span> <span ng-switch-when="Caps"><md-button class="md-raised key-caps" ng-class="{\'locked\': capsLocked, \'md-focused\': capsLocked}" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_capslock</md-icon></md-button></span> <span ng-switch-when="Enter"><md-button class="md-raised key-enter" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_return</md-icon></md-button></span> <span ng-switch-when="Shift"><md-button class="md-raised key-shift" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}">{{key[0]}}</md-button></span> <span ng-switch-when="Spacer"></span> <span ng-switch-default><md-button class="md-raised key-char" ng-mousedown="pressed($event, key[!capsLocked && !caps ? 0 : 1] || key[0])" aria-label="{{key[!capsLocked && !caps ? 0 : 1] || \'key\'}}">{{key[!capsLocked && !caps ? 0 : 1] || key[0]}}</md-button></span></div></div></md-keyboard>',
+                        template:'<md-keyboard class="md-grid" layout="column" ng-style="{top: keyboardTop, bottom: keyboardBottom}" ng-cloak><div ng-repeat="row in keyboard.keys" layout="row"><div flex ng-repeat="key in row" ng-switch="key[0]" ng-class="getKeyClass(key)"><span ng-switch-when="Bksp"><md-button class="md-raised key-bksp" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_backspace</md-icon></md-button></span> <span ng-switch-when="Tab"><md-button class="md-raised key-tab" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_tab</md-icon></md-button></span> <span ng-switch-when="Caps"><md-button class="md-raised key-caps" ng-class="{\'locked\': capsLocked, \'md-focused\': capsLocked}" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_capslock</md-icon></md-button></span> <span ng-switch-when="Enter"><md-button class="md-raised key-enter" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}"><md-icon>keyboard_return</md-icon></md-button></span> <span ng-switch-when="Shift"><md-button class="md-raised key-shift" ng-mousedown="pressed($event, key[0])" aria-label="{{key[0] || \'key\'}}">{{key[0]}}</md-button></span> <span ng-switch-when="Spacer"></span> <span ng-switch-default><md-button class="md-raised key-char" ng-mousedown="pressed($event, key[!capsLocked && !caps ? 0 : 1] || key[0])" aria-label="{{key[!capsLocked && !caps ? 0 : 1] || \'key\'}}">{{key[!capsLocked && !caps ? 0 : 1] || key[0]}}</md-button></span></div></div></md-keyboard>',
                         controller: ['$scope', mdKeyboardController],
                         bindToController: true
                     });
@@ -1596,6 +1596,17 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
 
             function mdKeyboardController($scope) {
                 $mdKeyboard.useLayout(attrs.useKeyboard);
+
+                if (attrs.keyboardRelative === undefined) {
+                    $scope.keyboardTop = 'auto';
+                    $scope.keyboardBottom = 0;
+                }
+                else {
+                    var top = Math.round(getElementOffset(element[0]).top);
+
+                    $scope.keyboardTop = top + 32 + 'px';
+                    $scope.keyboardBottom = 'auto';
+                }
 
                 var getKeyClass = function (key) {
                     var k = (key[0] || ' ').toLowerCase();
@@ -1616,6 +1627,14 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
 
                     return 'key-' + k;
                 };
+
+                function getElementOffset(element) {
+                    var de = document.documentElement;
+                    var box = element.getBoundingClientRect();
+                    var top = box.top + window.pageYOffset - de.clientTop;
+                    var left = box.left + window.pageXOffset - de.clientLeft;
+                    return { top: top, left: left };
+                }
 
                 var triggerKey = function($event, key) {
                     $event.preventDefault();
@@ -1756,7 +1775,7 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
                 }, 200);
             }
         }
-    }
+    };
 }
 
 })(angular);
