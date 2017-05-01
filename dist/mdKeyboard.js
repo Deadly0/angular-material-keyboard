@@ -1645,6 +1645,9 @@ function useKeyboardDirective($mdKeyboard, $timeout, $animate, $rootScope) {
                     $event.preventDefault();
 
                     switch (key) {
+                        case "Hide":
+                            $mdKeyboard.hide('ok');
+                            break;
                         case "Caps":
                             $scope.capsLocked = !$scope.capsLocked;
                             $scope.caps = false;
