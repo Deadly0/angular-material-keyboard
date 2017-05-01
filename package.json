@@ -64,5 +64,5 @@
     "start": "ws --spa demo.html",
     "build": "gulp build"
   },
-  "version": "0.0.15"
+  "version": "0.0.16"
 }
