@@ -1195,6 +1195,11 @@ function MdAutocompleteDecorator($provide) {
                         var cloned = input
                             .clone(true, true)
                             .attr('use-keyboard', attrs.useKeyboard);
+
+                        if (attrs.keyboardRelative !== undefined) {
+                            cloned.attr('keyboard-relative', attrs.keyboardRelative);
+                        }
+
                         var compiled = $compile(cloned)(scope);
                         input.replaceWith(compiled);
                         var keydown = MdAutocompleteCtrl.keydown;
